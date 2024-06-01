@@ -1,41 +1,56 @@
-local lib = loadstring(game:HttpGet"https://raw.githubusercontent.com/qamwxy/VapeUI/main/Vape.txt")()
+--[[
 
-local win = lib:Window("TestWindow",Color3.fromRGB(44, 120, 224), Enum.KeyCode.RightControl)
+Coding: utf-8
+Copyright (C) 2024 github.com/donfushii
 
-local tab = win:Tab("That is indeed a Tab")
+--]]
 
-tab:Button("Button", function()
-lib:Notification("Notification", "test_sub", "Sure")
+
+-- [ UI LIBRARY] --
+local lib = loadstring(game:HttpGet"https://raw.githubusercontent.com/donfushii/Library/main/Imperium")()
+local win = lib:Window("Imperium",Color3.fromRGB(44, 120, 224), Enum.KeyCode.V)
+
+
+
+-- [ TABS ] --
+local tab = win:Tab("TAB 1")
+
+
+
+-- [ TAB CONTENT  |  BUTTON ] --
+tab:Button("Example", function()
+lib:Notification("Notification", "Hello! U can put all u want here.", "Okay!")
 end)
 
-tab:Toggle("Toggle",false, function(t)
-print(t)
+-- [ TAB CONTENT  |  TOGGLE ] --
+tab:Toggle("Toggle",false, function()
+print("Imperium On Top.")
 end)
 
+-- [ TAB CONTENT  |  SLIDER ] --
 tab:Slider("Slider",0,100,30, function(t)
 print(t)
 end)
 
+-- [ TAB CONTENT  |  DROPDOWN ] --
 tab:Dropdown("Dropdown",{"Option 1","Option 2","Option 3","Option 4","Option 5"}, function(t)
 print(t)
 end)
 
-tab:Colorpicker("Colorpicker",Color3.fromRGB(255,0,0), function(t)
-print(t)
+-- [ TAB CONTENT  |  COLORPICKER ] --
+tab:Colorpicker("UI Color",Color3.fromRGB(44, 120, 224), function(t)
+lib:ChangePresetColor(Color3.fromRGB(t.R * 255, t.G * 255, t.B * 255)) -- UI Colour changer.
 end)
 
+-- [ TAB CONTENT  |  TEXTBOX ] --
 tab:Textbox("Textbox",true, function(t)
 print(t)
 end)
 
+-- [ TAB CONTENT  |  BIND ] --
 tab:Bind("Bind",Enum.KeyCode.RightShift, function()
 print("1234")
 end)
 
+-- [ TAB CONTENT  |  LABEL ] --
 tab:Label("Label")
-
-local changeclr = win:Tab("Change UI Color")
-
-changeclr:Colorpicker("Change UI Color",Color3.fromRGB(44, 120, 224), function(t)
-lib:ChangePresetColor(Color3.fromRGB(t.R * 255, t.G * 255, t.B * 255))
-end)
