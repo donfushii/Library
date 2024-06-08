@@ -340,7 +340,6 @@ MainTAB:Button("📍 ・ Potion Dick", function()
 		PotionTool.GripPos = Vector3.new(1.5, 0.5, -1.5)
 		PotionTool.Parent = plr.Backpack
 		PotionTool.Parent = plr.Character
-	    end
     else
 		PotionTool.Parent = plr.Character
 		PotionTool.GripUp = Vector3.new(0,1,0)
@@ -762,3 +761,4 @@ local impadmin = {
   end
 
 -- [ TAG'S ] --
+
