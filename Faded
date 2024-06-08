@@ -1439,16 +1439,16 @@ end);
 
 -- [ TAB COMBAT ] --
 
-CreateButton("Test Button #1", Combat1, function()
-    print("Imperium On Top #1")
+CreateButton("Test Button #4", Combat1, function()
+    print("Imperium On Top #4")
 end);
 
-CreateButton("Test Button #2", Combat1, function()
-    print("Imperium On Top #2")
+CreateButton("Test Button #5", Combat1, function()
+    print("Imperium On Top #5")
 end);
 
-CreateButton("Test Button #3", Combat1, function()
-    print("Imperium On Top #3")
+CreateButton("Test Button #6", Combat1, function()
+    print("Imperium On Top #6")
 end);
 
 
@@ -1639,16 +1639,16 @@ end);
 
 -- [ TAB LOCATIONS ] --
 
-CreateButton("Test Button #1", Locations1, function()
-    print("Imperium On Top #1")
+CreateButton("Test Button #7", Locations1, function()
+    print("Imperium On Top #7")
 end);
 
-CreateButton("Test Button #2", Locations1, function()
-    print("Imperium On Top #2")
+CreateButton("Test Button #8", Locations1, function()
+    print("Imperium On Top #8")
 end);
 
-CreateButton("Test Button #3", Locations1, function()
-    print("Imperium On Top #3")
+CreateButton("Test Button #9", Locations1, function()
+    print("Imperium On Top #9")
 end);
 
 
@@ -1656,14 +1656,14 @@ end);
 
 -- [ TAB FUNSTUFF ] --
 
-CreateButton("Test Button #1", FunStuff1, function()
-    print("Imperium On Top #1")
+CreateButton("Test Button #10", FunStuff1, function()
+    print("Imperium On Top #10")
 end);
 
-CreateButton("Test Button #2", FunStuff1, function()
-    print("Imperium On Top #2")
+CreateButton("Test Button #11", FunStuff1, function()
+    print("Imperium On Top #11")
 end);
 
-CreateButton("Test Button #3", FunStuff1, function()
-    print("Imperium On Top #3")
+CreateButton("Test Button #12", FunStuff1, function()
+    print("Imperium On Top #12")
 end);
