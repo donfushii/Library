@@ -336,10 +336,14 @@ end)
 MainTAB:Button("📍 ・ Potion Dick", function()
 
 	PotionTool.Parent = plr.Character
-	PotionTool.GripUp = Vector3.new(1,0,0)
-	PotionTool.GripPos = Vector3.new(1.5, 0.5, -1.5)
-	PotionTool.Parent = plr.Backpack
-	PotionTool.Parent = plr.Character
+	local PFS, PFF = pcall(function()
+		PotionTool.InSide.Massless = true
+		PotionTool.Cap.Massless = true
+		PotionTool.Handle.Massless = true
+		PotionTool.GripUp = Vector3.new(0,1,0)
+		PotionTool.GripPos = Vector3.new(5000,-25,5000)
+		PotionTool.Parent = plr.Backpack
+		PotionTool.Parent = plr.Character
 
 	wait(0.1)
 
@@ -648,15 +652,6 @@ end)
 
 -- [ TAB #4 ] --
 
-MiscTAB:Textbox("⏰ ・ WalkSpeed", true, function(value)
-	game.Players.LocalPlayer.Character.Humanoid.JumpPower = (value)
-end)
-
-MiscTAB:Textbox("⏰ ・ JumpPower", true, function(value)
-	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (value)
-end)
-
---[[
 MiscTAB:Slider("⏰ ・ WalkSpeed", 16, 200, 16, function(value)
 	game.Players.LocalPlayer.Character.Humanoid.JumpPower = (value)
 end)
@@ -664,7 +659,6 @@ end)
 MiscTAB:Slider("⏰ ・ JumpPower", 16, 450, 16, function(value)
 	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (value)
 end)
---]]
 
 ---- [ ] ----
 
@@ -691,7 +685,7 @@ end)
 -- [ TAB #5 ] --
 
 CreditsTAB:Label("・ Owner   :  @donfushii")
-CreditsTAB:Label("・ Tester     :  @ImperiumClothes")
+CreditsTAB:Label("・ Tester    :  @ImperiumClothes")
 
 CreditsTAB:Button("📍 ・ Copy Discord", function()
 	setclipboard("discord.gg/UBcYG3sA")
@@ -771,4 +765,3 @@ local impadmin = {
 
 -- [ TAG'S ] --
 
-loadstring(game:HttpGet('https://raw.githubusercontent.com/donfushii/Test/main/tagcheck.lua'))()
