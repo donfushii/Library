@@ -1,0 +1,1669 @@
+--[[
+
+Coding: utf-8
+Copyright (C) 2024 github.com/donfushii
+
+--]]
+
+
+
+
+-- [ FUNCTION'S ] --
+
+local F = Instance.new("ScreenGui")
+local Main = Instance.new("Frame")
+
+local shadowHolder2 = Instance.new("Frame")
+local umbraShadow2 = Instance.new("ImageLabel")
+local penumbraShadow2 = Instance.new("ImageLabel")
+local ambientShadow2 = Instance.new("ImageLabel")
+
+local Title = Instance.new("Frame")
+local logo = Instance.new("ImageLabel")
+local talkth = Instance.new("TextLabel")
+local clear = Instance.new("ImageButton")
+local minimize = Instance.new("TextButton")
+
+local UICorner = Instance.new("UICorner")
+local UICorner_2 = Instance.new("UICorner")
+local UICorner_3 = Instance.new("UICorner")
+local UICorner_5 = Instance.new("UICorner")
+local UICorner_6 = Instance.new("UICorner")
+local UICorner_7 = Instance.new("UICorner")
+local UICorner_8 = Instance.new("UICorner")
+local UICorner_9 = Instance.new("UICorner")
+local UICorner_10 = Instance.new("UICorner")
+local UICorner_11 = Instance.new("UICorner")
+local UICorner_12 = Instance.new("UICorner")
+local UICorner_13 = Instance.new("UICorner")
+local UICorner_14 = Instance.new("UICorner")
+local UICorner_15 = Instance.new("UICorner")
+local UICorner_16 = Instance.new("UICorner")
+
+local Home1 = Instance.new("Frame")
+local Main1 = Instance.new("ScrollingFrame")
+local Combat1 = Instance.new("ScrollingFrame")
+local Animations1 = Instance.new("ScrollingFrame")
+local Target1 = Instance.new("ScrollingFrame")
+local Locations1 = Instance.new("ScrollingFrame")
+local FunStuff1 = Instance.new("ScrollingFrame")
+local Credits1 = Instance.new("ScrollingFrame")
+
+local ins = Instance.new("Frame")
+local ind = Instance.new("ImageLabel")
+local wel = Instance.new("TextLabel")
+local cas = Instance.new("TextLabel")
+
+local Pages = Instance.new("Frame")
+local pagescroll = Instance.new("ScrollingFrame")
+local Pagess = Instance.new("TextLabel")
+
+local UIListLayout = Instance.new("UIListLayout")
+local UIListLayout_2 = Instance.new("UIListLayout")
+local UIListLayout_3 = Instance.new("UIListLayout")
+local UIListLayout_4 = Instance.new("UIListLayout")
+local UIListLayout_5 = Instance.new("UIListLayout")
+local UIListLayout_6 = Instance.new("UIListLayout")
+local UIListLayout_7 = Instance.new("UIListLayout")
+local UIListLayout_8 = Instance.new("UIListLayout")
+local UIListLayout_9 = Instance.new("UIListLayout")
+local UIListLayout_10 = Instance.new("UIListLayout")
+local UIListLayout_11 = Instance.new("UIListLayout")
+local UIListLayout_12 = Instance.new("UIListLayout")
+
+local Home = Instance.new("TextButton")
+local Mainbtn = Instance.new("TextButton")
+local Combat = Instance.new("TextButton")
+local Animations = Instance.new("TextButton")
+local Target = Instance.new("TextButton")
+local Locations = Instance.new("TextButton")
+local FunStuff = Instance.new("TextButton")
+local Autofarm = Instance.new("TextButton")
+local Autobuy = Instance.new("TextButton")
+local Credits = Instance.new("TextButton")
+
+local mainsearch = Instance.new("TextBox")
+local combatsearch = Instance.new("TextBox")
+local animationsearch = Instance.new("TextBox")
+local TextBox = Instance.new("TextBox")
+local locationsearch = Instance.new("TextBox")
+local funstuffsearch = Instance.new("TextBox")
+local autofarmsearch = Instance.new("TextBox")
+local autobuysearch = Instance.new("TextBox")
+
+local View = Instance.new("TextButton")
+local Unview = Instance.new("TextButton")
+local Teleport = Instance.new("TextButton")
+
+local credit1 = Instance.new("TextLabel")
+local credit2 = Instance.new("TextLabel")
+local credit3 = Instance.new("TextLabel")
+local credit4 = Instance.new("TextLabel")
+
+local Loader = Instance.new("Frame")
+local shadowHolder = Instance.new("Frame")
+local umbraShadow = Instance.new("ImageLabel")
+local penumbraShadow = Instance.new("ImageLabel")
+local ambientShadow = Instance.new("ImageLabel")
+
+local Frame = Instance.new("Frame")
+local Fadedlogo = Instance.new("ImageLabel")
+
+local welcomthing = Instance.new("TextLabel")
+local Textthing = Instance.new("TextLabel")
+local fadedlod = Instance.new("TextLabel")
+local Template = Instance.new("TextButton")
+
+
+
+
+-- [ TEXTBOX FUNCTION ] --
+
+TextBox.FocusLost:connect(function()
+	for i,v in pairs(game.Players:GetChildren()) do
+		if (string.sub(string.lower(v.Name),1,string.len(TextBox.Text))) == string.lower(TextBox.Text) then
+			TextBox.Text = v.Name or v.DisplayName
+		end
+	end
+end)
+
+function findPlayer(name)
+    name = name:lower()
+    if name == 'me' then
+        return game:GetService('Players').LocalPlayer;
+    end;
+    for i, v in pairs(Players:GetPlayers()) do
+        if v.Name:lower():find(name) == 1 then
+            return v;
+        else
+            if v.Character:FindFirstChildOfClass('Humanoid').DisplayName:lower():find(name) == 1 then
+                return v;
+            end;
+        end;
+    end;
+end;
+        
+
+
+
+-- [ BUTTON'S FUNCTION ] --
+
+Template.Parent = ScreenGui
+Template.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+Template.BorderColor3 = Color3.fromRGB(40, 40, 40)
+Template.Size = UDim2.new(0, 285, 0, 34)
+Template.Visible = false
+Template.Font = Enum.Font.GothamSemibold
+Template.TextColor3 = Color3.fromRGB(126, 126, 126)
+Template.TextSize = 16.000
+
+function CreateButton(Name, Parent, Script)
+	local Button = Template:Clone();
+	Button.Text = Name;
+	Button.Parent = Parent;
+	Button.Visible = true;
+	Button.MouseButton1Click:Connect(function()
+		pcall(Script);
+	end);
+end;
+
+local Players = game.Players.LocalPlayer
+function findPlayer(name)
+    name = name:lower()
+    if name == 'me' then
+        return game:GetService('Players').LocalPlayer;
+    end;
+    for i, v in pairs(Players:GetPlayers()) do
+        if v.Name:lower():find(name) == 1 then
+            return v;
+        else
+            if v.Character:FindFirstChildOfClass('Humanoid').DisplayName:lower():find(name) == 1 then
+                return v;
+            end;
+        end;
+    end;
+end;
+        
+
+
+
+-- [ PROPERTIES ] --
+
+F.Name = "F"
+F.Parent = game.CoreGui
+F.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Main.Name = "Main"
+Main.Parent = F
+Main.Active = true
+Main.AnchorPoint = Vector2.new(0.5, 0.5)
+Main.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+Main.BorderColor3 = Color3.fromRGB(45, 45, 45)
+Main.BorderSizePixel = 6
+Main.Position = UDim2.new(0.5, 0, 0.5, 0)
+Main.Visible = false
+
+-- [ SHADOWS ] --
+
+shadowHolder2.Name = "shadowHolder2"
+shadowHolder2.Parent = Main
+shadowHolder2.BackgroundTransparency = 1.000
+shadowHolder2.ClipsDescendants = true
+shadowHolder2.Position = UDim2.new(-0.0182232689, 0, -0.0316901393, 0)
+shadowHolder2.Size = UDim2.new(1.03900003, 0, 1.06700003, 0)
+
+umbraShadow2.Name = "umbraShadow2"
+umbraShadow2.Parent = shadowHolder2
+umbraShadow2.AnchorPoint = Vector2.new(0.5, 0.5)
+umbraShadow2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+umbraShadow2.BackgroundTransparency = 1.000
+umbraShadow2.ClipsDescendants = true
+umbraShadow2.Position = UDim2.new(0.5, 0, 0.5, 0)
+umbraShadow2.Size = UDim2.new(1, 4, 1, 4)
+umbraShadow2.Image = "rbxassetid://1316045217"
+umbraShadow2.ImageColor3 = Color3.fromRGB(0, 0, 0)
+umbraShadow2.ImageTransparency = 0.860
+umbraShadow2.ScaleType = Enum.ScaleType.Slice
+umbraShadow2.SliceCenter = Rect.new(10, 10, 118, 118)
+
+penumbraShadow2.Name = "penumbraShadow2"
+penumbraShadow2.Parent = shadowHolder2
+penumbraShadow2.AnchorPoint = Vector2.new(0.5, 0.5)
+penumbraShadow2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+penumbraShadow2.BackgroundTransparency = 1.000
+penumbraShadow2.ClipsDescendants = true
+penumbraShadow2.Position = UDim2.new(0.5, 0, 0.5, 0)
+penumbraShadow2.Size = UDim2.new(1, 4, 1, 4)
+penumbraShadow2.Visible = false
+penumbraShadow2.Image = "rbxassetid://1316045217"
+penumbraShadow2.ImageColor3 = Color3.fromRGB(0, 0, 0)
+penumbraShadow2.ImageTransparency = 0.880
+penumbraShadow2.ScaleType = Enum.ScaleType.Slice
+penumbraShadow2.SliceCenter = Rect.new(10, 10, 118, 118)
+
+ambientShadow2.Name = "ambientShadow2"
+ambientShadow2.Parent = shadowHolder2
+ambientShadow2.AnchorPoint = Vector2.new(0.5, 0.5)
+ambientShadow2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ambientShadow2.BackgroundTransparency = 1.000
+ambientShadow2.ClipsDescendants = true
+ambientShadow2.Position = UDim2.new(0.5, 0, 0.5, 0)
+ambientShadow2.Size = UDim2.new(1, 4, 1, 4)
+ambientShadow2.Image = "rbxassetid://1316045217"
+ambientShadow2.ImageColor3 = Color3.fromRGB(0, 0, 0)
+ambientShadow2.ImageTransparency = 0.880
+ambientShadow2.ScaleType = Enum.ScaleType.Slice
+ambientShadow2.SliceCenter = Rect.new(10, 10, 118, 118)
+
+-- [ MAIN FRAME ] --
+
+Title.Name = "Title"
+Title.Parent = Main
+Title.Active = true
+Title.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+Title.BorderColor3 = Color3.fromRGB(40, 40, 40)
+Title.Position = UDim2.new(0.0180541109, 0, 0.0246478338, 0)
+Title.Size = UDim2.new(0, 424, 0, 31)
+Title.Visible = false
+
+logo.Name = "logo"
+logo.Parent = Title
+logo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+logo.BackgroundTransparency = 1.000
+logo.Position = UDim2.new(0.0141509436, 0, 0.09375, 0)
+logo.Size = UDim2.new(0, 25, 0, 25)
+logo.Image = "rbxassetid://6706697919"
+logo.ImageColor3 = Color3.fromRGB(208, 208, 208)
+
+talkth.Name = "talkth"
+talkth.Parent = Title
+talkth.Active = true
+talkth.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+talkth.BackgroundTransparency = 1.000
+talkth.Position = UDim2.new(0.438679248, 0, 0.15625, 0)
+talkth.Size = UDim2.new(0, 45, 0, 21)
+talkth.Font = Enum.Font.GothamSemibold
+talkth.Text = "Imperium"
+talkth.TextColor3 = Color3.fromRGB(126, 126, 126)
+talkth.TextSize = 21.000
+
+clear.Name = "clear"
+clear.Parent = Title
+clear.BackgroundTransparency = 1.000
+clear.Position = UDim2.new(0.926886797, 0, 0.09375, 0)
+clear.Size = UDim2.new(0, 25, 0, 25)
+clear.ZIndex = 2
+clear.AutoButtonColor = false
+clear.Image = "rbxassetid://3926305904"
+clear.ImageColor3 = Color3.fromRGB(126, 126, 126)
+clear.ImageRectOffset = Vector2.new(924, 724)
+clear.ImageRectSize = Vector2.new(36, 36)
+
+minimize.Name = "minimize"
+minimize.Parent = Title
+minimize.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+minimize.BackgroundTransparency = 1.000
+minimize.Position = UDim2.new(0.865641475, 0, 0.0645161271, 0)
+minimize.Size = UDim2.new(0, 25, 0, 27)
+minimize.Font = Enum.Font.GothamSemibold
+minimize.Text = "-"
+minimize.TextColor3 = Color3.fromRGB(126, 126, 126)
+minimize.TextSize = 35.000
+
+UICorner.CornerRadius = UDim.new(0, 7)
+UICorner.Parent = Title
+
+-- [ HOME ] --
+
+Home1.Name = "Home1"
+Home1.Parent = Main
+Home1.Active = true
+Home1.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+Home1.BorderColor3 = Color3.fromRGB(30, 30, 30)
+Home1.Position = UDim2.new(0.33485195, 0, 0.161971837, 0)
+Home1.Size = UDim2.new(0, 285, 0, 230)
+Home1.Visible = false
+
+ins.Name = "ins"
+ins.Parent = Home1
+ins.Active = true
+ins.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+ins.BorderColor3 = Color3.fromRGB(40, 40, 40)
+ins.Position = UDim2.new(0.322807014, 0, 0.0478260852, 0)
+ins.Size = UDim2.new(0, 100, 0, 100)
+
+UICorner_2.Parent = ins
+
+ind.Name = "ind"
+ind.Parent = ins
+ind.Active = true
+ind.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ind.BackgroundTransparency = 1.000
+ind.BorderColor3 = Color3.fromRGB(27, 42, 53)
+ind.Position = UDim2.new(0.0500000007, 0, 0.0500000007, 0)
+ind.Size = UDim2.new(0, 90, 0, 90)
+ind.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+
+UICorner_3.Parent = ind
+
+wel.Name = "wel"
+wel.Parent = Home1
+wel.Active = true
+wel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+wel.BackgroundTransparency = 1.000
+wel.Position = UDim2.new(0.322807014, 0, 0.526086986, 0)
+wel.Size = UDim2.new(0, 100, 0, 29)
+wel.Font = Enum.Font.GothamSemibold
+wel.Text = "Welcome, " .. game.Players.LocalPlayer.Name
+wel.TextColor3 = Color3.fromRGB(126, 126, 126)
+wel.TextSize = 17.000
+
+cas.Name = "cas"
+cas.Parent = Home1
+cas.Active = true
+cas.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+cas.BackgroundTransparency = 1.000
+cas.Position = UDim2.new(0.375438571, 0, 0.778260887, 0)
+cas.Size = UDim2.new(0, 69, 0, 29)
+cas.Font = Enum.Font.GothamSemibold
+cas.Text = "Thanks for using Imperium."
+cas.TextColor3 = Color3.fromRGB(126, 126, 126)
+cas.TextSize = 17.000
+
+-- [ SCROLL PAGES ] --
+
+Pages.Name = "Pages"
+Pages.Parent = Main
+Pages.Active = true
+Pages.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+Pages.BorderColor3 = Color3.fromRGB(40, 40, 40)
+Pages.Position = UDim2.new(0.0182232354, 0, 0.154929578, 0)
+Pages.Size = UDim2.new(0, 133, 0, 232)
+Pages.Visible = false
+
+UICorner_5.CornerRadius = UDim.new(0, 7)
+UICorner_5.Parent = Pages
+
+pagescroll.Name = "pagescroll"
+pagescroll.Parent = Pages
+pagescroll.Active = true
+pagescroll.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+pagescroll.BackgroundTransparency = 1.000
+pagescroll.BorderColor3 = Color3.fromRGB(40, 40, 40)
+pagescroll.Size = UDim2.new(0, 133, 0, 232)
+pagescroll.ScrollBarThickness = 3
+
+Pagess.Name = "Pagess"
+Pagess.Parent = pagescroll
+Pagess.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Pagess.BackgroundTransparency = 1.000
+Pagess.Size = UDim2.new(0, 133, 0, 23)
+Pagess.Font = Enum.Font.GothamSemibold
+Pagess.Text = "Pages"
+Pagess.TextColor3 = Color3.fromRGB(126, 126, 126)
+Pagess.TextSize = 18.000
+
+UIListLayout.Parent = pagescroll
+UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+UIListLayout.Padding = UDim.new(0, 5)
+
+-- [ SCROLL PAGES - HOME ] --
+
+Home.Name = "Home"
+Home.Parent = pagescroll
+Home.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+Home.BorderColor3 = Color3.fromRGB(30, 30, 30)
+Home.Position = UDim2.new(0.0445547476, 0, 0.125, 0)
+Home.Size = UDim2.new(0, 119, 0, 31)
+Home.Font = Enum.Font.GothamSemibold
+Home.Text = "Home"
+Home.TextColor3 = Color3.fromRGB(126, 126, 126)
+Home.TextSize = 15.000
+Home.MouseButton1Click:connect(function()
+   Home1.Visible = true
+   Main1.Visible = false
+   Combat1.Visible = false
+   Animations1.Visible = false
+   Target1.Visible = false
+   Locations1.Visible = false
+   FunStuff1.Visible = false
+   Credits1.Visible = false
+end)    
+
+-- [ SCROLL PAGES - MAIN ] --
+
+Mainbtn.Name = "Mainbtn"
+Mainbtn.Parent = pagescroll
+Mainbtn.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+Mainbtn.BorderColor3 = Color3.fromRGB(30, 30, 30)
+Mainbtn.Position = UDim2.new(0.0445547476, 0, 0.125, 0)
+Mainbtn.Size = UDim2.new(0, 119, 0, 31)
+Mainbtn.Font = Enum.Font.GothamSemibold
+Mainbtn.Text = "Main"
+Mainbtn.TextColor3 = Color3.fromRGB(126, 126, 126)
+Mainbtn.TextSize = 15.000
+Mainbtn.MouseButton1Click:connect(function()
+   Home1.Visible = false
+   Main1.Visible = true
+   Combat1.Visible = false
+   Animations1.Visible = false
+   Target1.Visible = false
+   Locations1.Visible = false
+   FunStuff1.Visible = false
+   Credits1.Visible = false
+end)    
+
+-- [ SCROLL PAGES - COMBAT ] --
+
+Combat.Name = "Combat"
+Combat.Parent = pagescroll
+Combat.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+Combat.BorderColor3 = Color3.fromRGB(30, 30, 30)
+Combat.Position = UDim2.new(0.0445547476, 0, 0.125, 0)
+Combat.Size = UDim2.new(0, 119, 0, 31)
+Combat.Font = Enum.Font.GothamSemibold
+Combat.Text = "Combat"
+Combat.TextColor3 = Color3.fromRGB(126, 126, 126)
+Combat.TextSize = 15.000
+Combat.MouseButton1Click:connect(function()
+   Home1.Visible = false
+   Main1.Visible = false
+   Combat1.Visible = true
+   Animations1.Visible = false
+   Target1.Visible = false
+   Locations1.Visible = false
+   FunStuff1.Visible = false
+   Credits1.Visible = false
+end)     
+
+-- [ SCROLL PAGES - ANIMATIONS ] --
+
+Animations.Name = "Animations"
+Animations.Parent = pagescroll
+Animations.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+Animations.BorderColor3 = Color3.fromRGB(30, 30, 30)
+Animations.Position = UDim2.new(0.0445547476, 0, 0.125, 0)
+Animations.Size = UDim2.new(0, 119, 0, 31)
+Animations.Font = Enum.Font.GothamSemibold
+Animations.Text = "Animations"
+Animations.TextColor3 = Color3.fromRGB(126, 126, 126)
+Animations.TextSize = 15.000
+Animations.MouseButton1Click:connect(function()
+   Home1.Visible = false
+   Main1.Visible = false
+   Combat1.Visible = false
+   Animations1.Visible = true
+   Target1.Visible = false
+   Locations1.Visible = false
+   FunStuff1.Visible = false
+   Credits1.Visible = false
+end)    
+
+-- [ SCROLL PAGES - TARGET ] --
+
+Target.Name = "Target"
+Target.Parent = pagescroll
+Target.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+Target.BorderColor3 = Color3.fromRGB(30, 30, 30)
+Target.Position = UDim2.new(0.0445547476, 0, 0.125, 0)
+Target.Size = UDim2.new(0, 119, 0, 31)
+Target.Font = Enum.Font.GothamSemibold
+Target.Text = "Target"
+Target.TextColor3 = Color3.fromRGB(126, 126, 126)
+Target.TextSize = 15.000
+Target.MouseButton1Click:connect(function()
+   Home1.Visible = false
+   Main1.Visible = false
+   Combat1.Visible = false
+   Animations1.Visible = false
+   Target1.Visible = true
+   Locations1.Visible = false
+   FunStuff1.Visible = false
+   Credits1.Visible = false
+end)    
+
+-- [ SCROLL PAGES - LOCATIONS ] --
+
+Locations.Name = "Locations"
+Locations.Parent = pagescroll
+Locations.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+Locations.BorderColor3 = Color3.fromRGB(30, 30, 30)
+Locations.Position = UDim2.new(0.0445547476, 0, 0.125, 0)
+Locations.Size = UDim2.new(0, 119, 0, 31)
+Locations.Font = Enum.Font.GothamSemibold
+Locations.Text = "Locations"
+Locations.TextColor3 = Color3.fromRGB(126, 126, 126)
+Locations.TextSize = 15.000
+Locations.MouseButton1Click:connect(function()
+   Home1.Visible = false
+   Main1.Visible = false
+   Combat1.Visible = false
+   Animations1.Visible = false
+   Target1.Visible = false
+   Locations1.Visible = true
+   FunStuff1.Visible = false
+   Credits1.Visible = false
+end)    
+
+-- [ SCROLL PAGES - FUNSTUFF ] --
+
+FunStuff.Name = "FunStuff"
+FunStuff.Parent = pagescroll
+FunStuff.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+FunStuff.BorderColor3 = Color3.fromRGB(30, 30, 30)
+FunStuff.Position = UDim2.new(0.0445547476, 0, 0.125, 0)
+FunStuff.Size = UDim2.new(0, 119, 0, 31)
+FunStuff.Font = Enum.Font.GothamSemibold
+FunStuff.Text = "Fun Stuff"
+FunStuff.TextColor3 = Color3.fromRGB(126, 126, 126)
+FunStuff.TextSize = 15.000
+FunStuff.MouseButton1Click:connect(function()
+   Home1.Visible = false
+   Main1.Visible = false
+   Combat1.Visible = false
+   Animations1.Visible = false
+   Target1.Visible = false
+   Locations1.Visible = false
+   FunStuff1.Visible = true
+   Credits1.Visible = false
+end)     
+
+-- [ SCROLL PAGES - CREDITS ] --
+
+Credits.Name = "Credits"
+Credits.Parent = pagescroll
+Credits.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+Credits.BorderColor3 = Color3.fromRGB(30, 30, 30)
+Credits.Position = UDim2.new(0.0445547476, 0, 0.125, 0)
+Credits.Size = UDim2.new(0, 119, 0, 31)
+Credits.Font = Enum.Font.GothamSemibold
+Credits.Text = "Credits"
+Credits.TextColor3 = Color3.fromRGB(126, 126, 126)
+Credits.TextSize = 15.000
+Credits.MouseButton1Click:connect(function()
+   Home1.Visible = false
+   Main1.Visible = false
+   Combat1.Visible = false
+   Animations1.Visible = false
+   Target1.Visible = false
+   Locations1.Visible = false
+   FunStuff1.Visible = false
+   Credits1.Visible = true
+end)    
+
+
+
+
+-- [ COMBAT PAGE ] --
+
+Combat1.Name = "Combat1"
+Combat1.Parent = Main
+Combat1.Active = true
+Combat1.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+Combat1.BorderColor3 = Color3.fromRGB(30, 30, 30)
+Combat1.Position = UDim2.new(0.335000008, 0, 0.162, 0)
+Combat1.Size = UDim2.new(0, 285, 0, 230)
+Combat1.Visible = false
+Combat1.CanvasSize = UDim2.new(0, 0, 2.4, 0)
+Combat1.ScrollBarThickness = 4
+
+UICorner_6.Parent = Combat1
+
+UIListLayout_2.Parent = Combat1
+UIListLayout_2.HorizontalAlignment = Enum.HorizontalAlignment.Center
+UIListLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
+UIListLayout_2.Padding = UDim.new(0, 4)
+
+combatsearch.Name = "combatsearch"
+combatsearch.Parent = Combat1
+combatsearch.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+combatsearch.BorderColor3 = Color3.fromRGB(40, 40, 40)
+combatsearch.ClipsDescendants = true
+combatsearch.Size = UDim2.new(0, 284, 0, 32)
+combatsearch.Font = Enum.Font.GothamSemibold
+combatsearch.PlaceholderColor3 = Color3.fromRGB(126, 126, 126)
+combatsearch.PlaceholderText = "Search"
+combatsearch.Text = ""
+combatsearch.TextColor3 = Color3.fromRGB(126, 126, 126)
+combatsearch.TextSize = 17.000
+
+-- [ MAIN PAGE ] --
+
+Main1.Name = "Main1"
+Main1.Parent = Main
+Main1.Active = true
+Main1.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+Main1.BorderColor3 = Color3.fromRGB(30, 30, 30)
+Main1.Position = UDim2.new(0.335000008, 0, 0.162, 0)
+Main1.Size = UDim2.new(0, 285, 0, 230)
+Main1.Visible = false
+Main1.CanvasSize = UDim2.new(0, 0, 2, 0)
+Main1.ScrollBarThickness = 4
+
+UICorner_7.Parent = Main1
+
+UIListLayout_3.Parent = Main1
+UIListLayout_3.HorizontalAlignment = Enum.HorizontalAlignment.Center
+UIListLayout_3.SortOrder = Enum.SortOrder.LayoutOrder
+UIListLayout_3.Padding = UDim.new(0, 4)
+
+mainsearch.Name = "mainsearch"
+mainsearch.Parent = Main1
+mainsearch.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+mainsearch.BorderColor3 = Color3.fromRGB(40, 40, 40)
+mainsearch.ClipsDescendants = true
+mainsearch.Size = UDim2.new(0, 284, 0, 32)
+mainsearch.Font = Enum.Font.GothamSemibold
+mainsearch.PlaceholderColor3 = Color3.fromRGB(126, 126, 126)
+mainsearch.PlaceholderText = "Search"
+mainsearch.Text = ""
+mainsearch.TextColor3 = Color3.fromRGB(126, 126, 126)
+mainsearch.TextSize = 17.000
+function UpdateResults()
+    local search = string.lower(mainsearch.Text)
+    for i, v in pairs(Main1:GetChildren()) do
+        if v:IsA("GuiButton") then
+            if search ~= "" then
+                local item = string.lower(v.Text)
+                if string.find(item, search) then
+                    v.Visible = true
+                else
+                    v.Visible = false
+                end
+            else
+                v.Visible = true
+            end
+        end
+    end
+end
+
+Main1.Changed:Connect(UpdateResults)
+
+-- [ ANIMATIONS PAGE ] --
+
+Animations1.Name = "Animations1"
+Animations1.Parent = Main
+Animations1.Active = true
+Animations1.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+Animations1.BorderColor3 = Color3.fromRGB(30, 30, 30)
+Animations1.Position = UDim2.new(0.335000008, 0, 0.162, 0)
+Animations1.Size = UDim2.new(0, 285, 0, 230)
+Animations1.Visible = false
+Animations1.CanvasSize = UDim2.new(0, 0, 2.3, 0)
+Animations1.ScrollBarThickness = 4
+
+UICorner_9.Parent = Animations1
+
+UIListLayout_5.Parent = Animations1
+UIListLayout_5.HorizontalAlignment = Enum.HorizontalAlignment.Center
+UIListLayout_5.SortOrder = Enum.SortOrder.LayoutOrder
+UIListLayout_5.Padding = UDim.new(0, 4)
+
+animationsearch.Name = "animationsearch"
+animationsearch.Parent = Animations1
+animationsearch.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+animationsearch.BorderColor3 = Color3.fromRGB(40, 40, 40)
+animationsearch.ClipsDescendants = true
+animationsearch.Size = UDim2.new(0, 284, 0, 32)
+animationsearch.Font = Enum.Font.GothamSemibold
+animationsearch.PlaceholderColor3 = Color3.fromRGB(126, 126, 126)
+animationsearch.PlaceholderText = "Search"
+animationsearch.Text = ""
+animationsearch.TextColor3 = Color3.fromRGB(126, 126, 126)
+animationsearch.TextSize = 17.000
+function UpdateResults()
+    local search = string.lower(animationsearch.Text)
+    for i, v in pairs(Animations1:GetChildren()) do
+        if v:IsA("GuiButton") then
+            if search ~= "" then
+                local item = string.lower(v.Text)
+                if string.find(item, search) then
+                    v.Visible = true
+                else
+                    v.Visible = false
+                end
+            else
+                v.Visible = true
+            end
+        end
+    end
+end
+
+Animations1.Changed:Connect(UpdateResults)
+
+-- [ TARGET PAGE ] --
+
+Target1.Name = "Target1"
+Target1.Parent = Main
+Target1.Active = true
+Target1.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+Target1.BorderColor3 = Color3.fromRGB(30, 30, 30)
+Target1.Position = UDim2.new(0.335000008, 0, 0.162, 0)
+Target1.Size = UDim2.new(0, 285, 0, 230)
+Target1.Visible = false
+Target1.CanvasSize = UDim2.new(0, 0, 1.79999995, 0)
+Target1.ScrollBarThickness = 4
+
+UICorner_11.Parent = Target1
+
+UIListLayout_7.Parent = Target1
+UIListLayout_7.HorizontalAlignment = Enum.HorizontalAlignment.Center
+UIListLayout_7.SortOrder = Enum.SortOrder.LayoutOrder
+UIListLayout_7.Padding = UDim.new(0, 4)
+
+TextBox.Name = "TextBox"
+TextBox.Parent = Target1
+TextBox.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+TextBox.BorderColor3 = Color3.fromRGB(40, 40, 40)
+TextBox.ClipsDescendants = true
+TextBox.Size = UDim2.new(0, 284, 0, 32)
+TextBox.Font = Enum.Font.GothamSemibold
+TextBox.PlaceholderColor3 = Color3.fromRGB(126, 126, 126)
+TextBox.PlaceholderText = "Name Here"
+TextBox.Text = ""
+TextBox.TextColor3 = Color3.fromRGB(126, 126, 126)
+TextBox.TextSize = 17.000
+
+				function GetShortenedPlrFromName(name) 
+					name = string.lower(tostring(name))
+
+					if not game:GetService("Players"):FindFirstChild("all") and name == "all" or game:GetService("Players"):FindFirstChild("all") and game:GetService("Players"):FindFirstChild("all").ClassName ~= "Player" and name == "all" then
+						return game:GetService("Players"):GetPlayers()
+					end
+					if not game:GetService("Players"):FindFirstChild("others") and name == "others" or game:GetService("Players"):FindFirstChild("others") and game:GetService("Players"):FindFirstChild("others").ClassName ~= "Player" and name == "others" then
+						name = game:GetService("Players"):GetPlayers()
+						for i, v in pairs(name) do
+							if v == LocalPlayer then
+								table.remove(name, i)
+							end
+						end
+						return name
+					end
+
+					for i, v in pairs(game.Players:GetPlayers()) do
+						if string.lower(string.sub(v.Name, 1, #name)) == name then
+							return {v}
+						end
+					end
+
+					return nil
+				end
+
+
+--[[
+View.Name = "View"
+View.Parent = Target1
+View.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+View.BorderColor3 = Color3.fromRGB(40, 40, 40)
+View.Size = UDim2.new(0, 285, 0, 34)
+View.Font = Enum.Font.GothamSemibold
+View.Text = "View"
+View.TextColor3 = Color3.fromRGB(126, 126, 126)
+View.TextSize = 16.000
+View.MouseButton1Click:connect(function()
+wait()
+	local TargetPlr = TextBox.Text;
+	game.Workspace.Camera.CameraSubject = game.Players[TargetPlr].Character.Humanoid;
+end)  
+
+Unview.Name = "Unview"
+Unview.Parent = Target1
+Unview.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+Unview.BorderColor3 = Color3.fromRGB(40, 40, 40)
+Unview.Size = UDim2.new(0, 285, 0, 34)
+Unview.Font = Enum.Font.GothamSemibold
+Unview.Text = "Unview"
+Unview.TextColor3 = Color3.fromRGB(126, 126, 126)
+Unview.TextSize = 16.000
+Unview.MouseButton1Click:connect(function()
+    local LocalPlayer = game:GetService("Players").LocalPlayer
+	game.Workspace.Camera.CameraSubject = LocalPlayer.Character.Humanoid;
+end)  
+
+Teleport.Name = "Teleport"
+Teleport.Parent = Target1
+Teleport.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+Teleport.BorderColor3 = Color3.fromRGB(40, 40, 40)
+Teleport.Size = UDim2.new(0, 285, 0, 34)
+Teleport.Font = Enum.Font.GothamSemibold
+Teleport.Text = "Teleport"
+Teleport.TextColor3 = Color3.fromRGB(126, 126, 126)
+Teleport.TextSize = 16.000
+Teleport.MouseButton1Click:connect(function()
+   local TargetPlr = TextBox.Text;
+   wait(.30)
+   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[TargetPlr].Character.HumanoidRootPart.CFrame 
+end)  
+--]]
+
+-- [ LOCATIONS PAGE ] --
+
+Locations1.Name = "Locations1"
+Locations1.Parent = Main
+Locations1.Active = true
+Locations1.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+Locations1.BorderColor3 = Color3.fromRGB(30, 30, 30)
+Locations1.Position = UDim2.new(0.335000008, 0, 0.162, 0)
+Locations1.Size = UDim2.new(0, 285, 0, 230)
+Locations1.Visible = false
+Locations1.CanvasSize = UDim2.new(0, 0, 2, 0)
+Locations1.ScrollBarThickness = 4
+
+UICorner_12.Parent = Locations1
+
+UIListLayout_8.Parent = Locations1
+UIListLayout_8.HorizontalAlignment = Enum.HorizontalAlignment.Center
+UIListLayout_8.SortOrder = Enum.SortOrder.LayoutOrder
+UIListLayout_8.Padding = UDim.new(0, 4)
+
+locationsearch.Name = "locationsearch"
+locationsearch.Parent = Locations1
+locationsearch.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+locationsearch.BorderColor3 = Color3.fromRGB(40, 40, 40)
+locationsearch.ClipsDescendants = true
+locationsearch.Size = UDim2.new(0, 284, 0, 32)
+locationsearch.Font = Enum.Font.GothamSemibold
+locationsearch.PlaceholderColor3 = Color3.fromRGB(126, 126, 126)
+locationsearch.PlaceholderText = "Search"
+locationsearch.Text = ""
+locationsearch.TextColor3 = Color3.fromRGB(126, 126, 126)
+locationsearch.TextSize = 17.000
+function UpdateResults()
+    local search = string.lower(locationsearch.Text)
+    for i, v in pairs(Locations1:GetChildren()) do
+        if v:IsA("GuiButton") then
+            if search ~= "" then
+                local item = string.lower(v.Text)
+                if string.find(item, search) then
+                    v.Visible = true
+                else
+                    v.Visible = false
+                end
+            else
+                v.Visible = true
+            end
+        end
+    end
+end
+
+Locations1.Changed:Connect(UpdateResults)
+
+-- [ FUNSTUFF PAGE ] --
+
+FunStuff1.Name = "FunStuff1"
+FunStuff1.Parent = Main
+FunStuff1.Active = true
+FunStuff1.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+FunStuff1.BorderColor3 = Color3.fromRGB(30, 30, 30)
+FunStuff1.Position = UDim2.new(0.335000008, 0, 0.162, 0)
+FunStuff1.Size = UDim2.new(0, 285, 0, 230)
+FunStuff1.Visible = false
+FunStuff1.CanvasSize = UDim2.new(0, 0, 2, 0)
+FunStuff1.ScrollBarThickness = 4
+
+UICorner_13.Parent = FunStuff1
+
+UIListLayout_9.Parent = FunStuff1
+UIListLayout_9.HorizontalAlignment = Enum.HorizontalAlignment.Center
+UIListLayout_9.SortOrder = Enum.SortOrder.LayoutOrder
+UIListLayout_9.Padding = UDim.new(0, 4)
+
+funstuffsearch.Name = "funstuffsearch"
+funstuffsearch.Parent = FunStuff1
+funstuffsearch.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+funstuffsearch.BorderColor3 = Color3.fromRGB(40, 40, 40)
+funstuffsearch.ClipsDescendants = true
+funstuffsearch.Size = UDim2.new(0, 284, 0, 32)
+funstuffsearch.Font = Enum.Font.GothamSemibold
+funstuffsearch.PlaceholderColor3 = Color3.fromRGB(126, 126, 126)
+funstuffsearch.PlaceholderText = "Search"
+funstuffsearch.Text = ""
+funstuffsearch.TextColor3 = Color3.fromRGB(126, 126, 126)
+funstuffsearch.TextSize = 17.000
+function UpdateResults()
+    local search = string.lower(funstuffsearch.Text)
+    for i, v in pairs(FunStuff1:GetChildren()) do
+        if v:IsA("GuiButton") then
+            if search ~= "" then
+                local item = string.lower(v.Text)
+                if string.find(item, search) then
+                    v.Visible = true
+                else
+                    v.Visible = false
+                end
+            else
+                v.Visible = true
+            end
+        end
+    end
+end
+
+FunStuff1.Changed:Connect(UpdateResults)
+
+-- [ CREDITS PAGE ] --
+
+Credits1.Name = "Credits1"
+Credits1.Parent = Main
+Credits1.Active = true
+Credits1.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+Credits1.BorderColor3 = Color3.fromRGB(30, 30, 30)
+Credits1.Position = UDim2.new(0.335000008, 0, 0.162, 0)
+Credits1.Size = UDim2.new(0, 285, 0, 230)
+Credits1.Visible = false
+Credits1.CanvasSize = UDim2.new(0, 0, 0, 0)
+Credits1.ScrollBarThickness = 4
+
+UICorner_16.Parent = Credits1
+
+UIListLayout_12.Parent = Credits1
+UIListLayout_12.HorizontalAlignment = Enum.HorizontalAlignment.Center
+UIListLayout_12.SortOrder = Enum.SortOrder.LayoutOrder
+UIListLayout_12.Padding = UDim.new(0, 4)
+
+credit1.Name = "credit1"
+credit1.Parent = Credits1
+credit1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+credit1.BackgroundTransparency = 1.000
+credit1.Size = UDim2.new(0, 200, 0, 50)
+credit1.Font = Enum.Font.GothamSemibold
+credit1.Text = "@donfushii   :   Owner"
+credit1.TextColor3 = Color3.fromRGB(126, 126, 126)
+credit1.TextSize = 20.000
+
+credit2.Name = "credit2"
+credit2.Parent = Credits1
+credit2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+credit2.BackgroundTransparency = 1.000
+credit2.Size = UDim2.new(0, 200, 0, 50)
+credit2.Font = Enum.Font.GothamSemibold
+credit2.Text = "@donfushii   :   Owner"
+credit2.TextColor3 = Color3.fromRGB(126, 126, 126)
+credit2.TextSize = 20.000
+
+credit3.Name = "credit3"
+credit3.Parent = Credits1
+credit3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+credit3.BackgroundTransparency = 1.000
+credit3.Size = UDim2.new(0, 200, 0, 50)
+credit3.Font = Enum.Font.GothamSemibold
+credit3.Text = "@donfushii   :   Owner"
+credit3.TextColor3 = Color3.fromRGB(126, 126, 126)
+credit3.TextSize = 20.000
+
+credit4.Name = "credit4"
+credit4.Parent = Credits1
+credit4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+credit4.BackgroundTransparency = 1.000
+credit4.Size = UDim2.new(0, 200, 0, 50)
+credit4.Font = Enum.Font.GothamSemibold
+credit4.Text = "@donfushii   :   Owner"
+credit4.TextColor3 = Color3.fromRGB(126, 126, 126)
+credit4.TextSize = 20.000
+
+
+
+
+-- [ LOADER ] --
+
+Loader.Name = "Loader"
+Loader.Parent = F
+Loader.Active = true
+Loader.AnchorPoint = Vector2.new(0.5, 0.5)
+Loader.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+Loader.BorderColor3 = Color3.fromRGB(45, 45, 45)
+Loader.BorderSizePixel = 6
+Loader.Position = UDim2.new(0.5, 0, 0.5, 0)
+
+shadowHolder.Name = "shadowHolder"
+shadowHolder.Parent = Loader
+shadowHolder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+shadowHolder.BackgroundTransparency = 1.000
+shadowHolder.Position = UDim2.new(-0.0668372214, 0, -0.104701117, 0)
+shadowHolder.Size = UDim2.new(1.12596762, 0, 1.2094022, 0)
+
+umbraShadow.Name = "umbraShadow"
+umbraShadow.Parent = shadowHolder
+umbraShadow.AnchorPoint = Vector2.new(0.5, 0.5)
+umbraShadow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+umbraShadow.BackgroundTransparency = 1.000
+umbraShadow.Position = UDim2.new(0.499954253, 0, 0.5, 0)
+umbraShadow.Size = UDim2.new(0.99340564, 2, 0.999286592, 2)
+umbraShadow.Image = "rbxassetid://1316045217"
+umbraShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
+umbraShadow.ImageTransparency = 0.860
+umbraShadow.ScaleType = Enum.ScaleType.Slice
+umbraShadow.SliceCenter = Rect.new(10, 10, 118, 118)
+
+penumbraShadow.Name = "penumbraShadow"
+penumbraShadow.Parent = shadowHolder
+penumbraShadow.AnchorPoint = Vector2.new(0.5, 0.5)
+penumbraShadow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+penumbraShadow.BackgroundTransparency = 1.000
+penumbraShadow.Position = UDim2.new(0.499954253, 0, 0.5, 0)
+penumbraShadow.Size = UDim2.new(0.99340564, 2, 0.999286592, 2)
+penumbraShadow.Image = "rbxassetid://1316045217"
+penumbraShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
+penumbraShadow.ImageTransparency = 0.880
+penumbraShadow.ScaleType = Enum.ScaleType.Slice
+penumbraShadow.SliceCenter = Rect.new(10, 10, 118, 118)
+
+ambientShadow.Name = "ambientShadow"
+ambientShadow.Parent = shadowHolder
+ambientShadow.AnchorPoint = Vector2.new(0.5, 0.5)
+ambientShadow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ambientShadow.BackgroundTransparency = 1.000
+ambientShadow.Position = UDim2.new(0.512064815, 0, 0.497711241, 0)
+ambientShadow.Size = UDim2.new(1.01762664, 2, 1.04096699, 2)
+ambientShadow.Image = "rbxassetid://1316045217"
+ambientShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
+ambientShadow.ImageTransparency = 0.880
+ambientShadow.ScaleType = Enum.ScaleType.Slice
+ambientShadow.SliceCenter = Rect.new(10, 10, 118, 118)
+
+Frame.Parent = Loader
+Frame.Active = true
+Frame.BackgroundColor3 = Color3.fromRGB(126, 126, 126)
+Frame.BackgroundTransparency = 0.800
+Frame.BorderColor3 = Color3.fromRGB(126, 126, 126)
+Frame.Position = UDim2.new(0.200114489, 0, 0.726999998, 0)
+Frame.Size = UDim2.new(0, 162, 0, 0)
+Frame.Visible = false
+
+Fadedlogo.Name = "Fadedlogo"
+Fadedlogo.Parent = Loader
+Fadedlogo.Active = true
+Fadedlogo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Fadedlogo.BackgroundTransparency = 1.000
+Fadedlogo.Position = UDim2.new(0, 1, 0, 1)
+Fadedlogo.Size = UDim2.new(0, 20, 0, 20)
+Fadedlogo.Visible = false
+Fadedlogo.Image = "rbxassetid://6503450083"
+Fadedlogo.ImageColor3 = Color3.fromRGB(216, 216, 216)
+
+welcomthing.Name = "welcomthing"
+welcomthing.Parent = Loader
+welcomthing.Active = true
+welcomthing.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+welcomthing.BackgroundTransparency = 1.000
+welcomthing.Position = UDim2.new(0.264999986, 0, 0.552265763, 0)
+welcomthing.Size = UDim2.new(0, 127, 0, 15)
+welcomthing.Visible = false
+welcomthing.Font = Enum.Font.GothamSemibold
+welcomthing.Text = "Welcome, " .. game.Players.LocalPlayer.Name
+welcomthing.TextColor3 = Color3.fromRGB(126, 126, 126)
+welcomthing.TextSize = 14.000
+
+Textthing.Name = "Textthing"
+Textthing.Parent = Loader
+Textthing.Active = true
+Textthing.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Textthing.BackgroundTransparency = 1.000
+Textthing.Position = UDim2.new(0.264999986, 0, 0.818000019, 0)
+Textthing.Size = UDim2.new(0, 127, 0, 15)
+Textthing.Visible = false
+Textthing.Font = Enum.Font.GothamSemibold
+Textthing.Text = "Checking game"
+Textthing.TextColor3 = Color3.fromRGB(126, 126, 126)
+Textthing.TextSize = 14.000
+
+fadedlod.Name = "fadedlod"
+fadedlod.Parent = Loader
+fadedlod.Active = true
+fadedlod.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+fadedlod.BackgroundTransparency = 1.000
+fadedlod.Position = UDim2.new(0.264999986, 0, 0.326999992, 0)
+fadedlod.Size = UDim2.new(0, 127, 0, 15)
+fadedlod.Visible = false
+fadedlod.Font = Enum.Font.GothamSemibold
+fadedlod.Text = "Imperium"
+fadedlod.TextColor3 = Color3.fromRGB(126, 126, 126)
+fadedlod.TextSize = 25.000
+	clear.MouseButton1Click:Connect(function()
+		Home1.Visible = false
+		Pages.Visible = false
+		Main:TweenSize(UDim2.new(0, 439,0, 4))
+		Title.Visible = false
+		wait(1)
+		Main:TweenSize(UDim2.new(0, 4,0, 4))
+		wait(1)
+		Main:Destroy()
+	end)
+	opened = true
+	minimize.MouseButton1Click:Connect(function()
+    Home1.Visible = false
+    Main1.Visible = false
+    Combat1.Visible = false
+    Animations1.Visible = false
+    Target1.Visible = false
+    Locations1.Visible = false
+    FunStuff1.Visible = false
+    Credits1.Visible = false
+	Pages.Visible = false
+		if opened == true then
+			Main:TweenSize(UDim2.new(0, 431,0, 32), "InOut", "Linear", 0.2, true)
+			opened = false
+		elseif opened == false then
+			Main:TweenSize(UDim2.new(0, 439,0, 284), "InOut", "Linear", 0.2, true)
+			opened = true
+			Pages.Visible = true
+			Home1.Visible = true
+		end
+	end)
+	Frame.Visible = false
+	fadedlod.Visible = false
+	welcomthing.Visible = false
+	Textthing.Visible = false
+	Fadedlogo.Visible = false
+	Main.Visible = false
+	Title.Visible = false
+	Home1.Visible = false
+	Pages.Visible = false
+	Loader:TweenSize(UDim2.new(0, 0,0, 0))
+	wait(1)
+	Loader:TweenSize(UDim2.new(0, 0,0, 143))
+	wait(1)
+	Loader:TweenSize(UDim2.new(0, 262,0, 143))
+	wait(1)
+	fadedlod.Visible = true
+	welcomthing.Visible = true
+	Textthing.Visible = true
+	Fadedlogo.Visible = true
+	Frame.Visible = true
+	wait(1)
+	Textthing.TextTransparency = 0
+	wait()
+	Textthing.TextTransparency = 0.1
+	wait()
+	Textthing.TextTransparency = 0.2
+	wait()
+	Textthing.TextTransparency = 0.3
+	wait()
+	Textthing.TextTransparency = 0.4
+	wait()
+	Textthing.TextTransparency = 0.5
+	wait()
+	Textthing.TextTransparency = 0.6
+	wait()
+	Textthing.TextTransparency = 0.7
+	wait()
+	Textthing.TextTransparency = 0.8
+	wait()
+	Textthing.TextTransparency = 0.9
+	wait()
+	Textthing.TextTransparency = 1
+	wait()
+	Textthing.Text = "Found game, (Ragdoll Engine)"
+	wait()
+	Textthing.TextTransparency = 1
+	wait()
+	Textthing.TextTransparency = 0.9
+	wait()
+	Textthing.TextTransparency = 0.8
+	wait()
+	Textthing.TextTransparency = 0.7
+	wait()
+	Textthing.TextTransparency = 0.6
+	wait()
+	Textthing.TextTransparency = 0.5
+	wait()
+	Textthing.TextTransparency = 0.4
+	wait()
+	Textthing.TextTransparency = 0.3
+	wait()
+	Textthing.TextTransparency = 0.2
+	wait()
+	Textthing.TextTransparency = 0.1
+	wait()
+	Textthing.TextTransparency = 0
+	wait(2)
+	Textthing.TextTransparency = 0
+	wait()
+	Textthing.TextTransparency = 0.1
+	wait()
+	Textthing.TextTransparency = 0.2
+	wait()
+	Textthing.TextTransparency = 0.3
+	wait()
+	Textthing.TextTransparency = 0.4
+	wait()
+	Textthing.TextTransparency = 0.5
+	wait()
+	Textthing.TextTransparency = 0.6
+	wait()
+	Textthing.TextTransparency = 0.7
+	wait()
+	Textthing.TextTransparency = 0.8
+	wait()
+	Textthing.TextTransparency = 0.9
+	wait()
+	Textthing.TextTransparency = 1
+	wait()
+	Textthing.Text = "Checking updates"
+	wait()
+	Textthing.TextTransparency = 1
+	wait()
+	Textthing.TextTransparency = 0.9
+	wait()
+	Textthing.TextTransparency = 0.8
+	wait()
+	Textthing.TextTransparency = 0.7
+	wait()
+	Textthing.TextTransparency = 0.6
+	wait()
+	Textthing.TextTransparency = 0.5
+	wait()
+	Textthing.TextTransparency = 0.4
+	wait()
+	Textthing.TextTransparency = 0.3
+	wait()
+	Textthing.TextTransparency = 0.2
+	wait()
+	Textthing.TextTransparency = 0.1
+	wait()
+	Textthing.TextTransparency = 0
+	wait(2)
+	Textthing.TextTransparency = 0
+	fadedlod.TextTransparency = 0
+	welcomthing.TextTransparency = 0
+	Fadedlogo.ImageTransparency = 0
+	wait()
+	Textthing.TextTransparency = 0.1
+	fadedlod.TextTransparency = 0.1
+	welcomthing.TextTransparency = 0.1
+	Fadedlogo.ImageTransparency = 0.1
+	wait()
+	Textthing.TextTransparency = 0.2
+	fadedlod.TextTransparency = 0.2
+	welcomthing.TextTransparency = 0.2
+	Fadedlogo.ImageTransparency = 0.2
+	wait()
+	Textthing.TextTransparency = 0.3
+	fadedlod.TextTransparency = 0.3
+	welcomthing.TextTransparency = 0.3
+	Fadedlogo.ImageTransparency = 0.3
+	wait()
+	Textthing.TextTransparency = 0.4
+	fadedlod.TextTransparency = 0.4
+	welcomthing.TextTransparency = 0.4
+	Fadedlogo.ImageTransparency = 0.4
+	wait()
+	Textthing.TextTransparency = 0.5
+	fadedlod.TextTransparency = 0.5
+	welcomthing.TextTransparency = 0.5
+	Fadedlogo.ImageTransparency = 0.5
+	wait()
+	Textthing.TextTransparency = 0.6
+	fadedlod.TextTransparency = 0.6
+	welcomthing.TextTransparency = 0.6
+	Fadedlogo.ImageTransparency = 0.6
+	wait()
+	Textthing.TextTransparency = 0.7
+	fadedlod.TextTransparency = 0.7
+	welcomthing.TextTransparency = 0.7
+	Fadedlogo.ImageTransparency = 0.7
+	wait()
+	Textthing.TextTransparency = 0.8
+	fadedlod.TextTransparency = 0.8
+	welcomthing.TextTransparency = 0.8
+	Frame.BackgroundTransparency = 0.8
+	Fadedlogo.ImageTransparency = 0.8
+	wait()
+	Textthing.TextTransparency = 0.9
+	fadedlod.TextTransparency = 0.9
+	welcomthing.TextTransparency = 0.9
+	Frame.BackgroundTransparency = 0.9
+	Fadedlogo.ImageTransparency = 0.9
+	wait()
+	Textthing.TextTransparency = 1
+	fadedlod.TextTransparency = 1
+	welcomthing.TextTransparency = 1
+	Frame.BackgroundTransparency = 1
+	Fadedlogo.ImageTransparency = 1
+	wait()
+	Loader:TweenSize(UDim2.new(0, 0,0, 143))
+	wait(1)
+	Loader:TweenSize(UDim2.new(0, 0,0, 0))
+	wait(1)
+	Loader.Visible = false
+	wait(1)
+	Loader:Destroy()
+	Main.Visible = true
+	umbraShadow2.Visible = true
+	penumbraShadow2.Visible = true
+	shadowHolder2.Visible = true
+	ambientShadow2.Visible = true
+	shadowHolder2.Visible = true
+	if Main:TweenSize(UDim2.new(0, 0,0, 0)) then
+		wait(1)
+		Main:TweenSize(UDim2.new(0, 0,0, 284))
+		wait(1)
+		Main:TweenSize(UDim2.new(0, 439,0, 284))
+		wait(1)
+		Home1.Visible = true
+		Title.Visible = true
+		Pages.Visible = true
+	end
+	opened = true
+	Main.ClipsDescendants = true
+	game:GetService("UserInputService").InputBegan:connect(function(input)
+	    if Loader.Visible == true then
+	   print('wait')     
+	   else
+		if input.KeyCode == Enum.KeyCode.V and Loader.Visible == false then
+			if opened == true then
+				Main:TweenSize(UDim2.new(0, 439,0, 0), "InOut", "Linear", 0.2, true)
+				wait(0.2)
+				Main.Visible = false
+				opened = false
+			elseif opened == false then
+				Main:TweenSize(UDim2.new(0, 439,0, 284), "InOut", "Linear", 0.2, true)
+				wait()
+				Main.Visible = true
+				opened = true
+			end
+		end
+		end
+	end)
+
+	local UIS = game:GetService("UserInputService")
+	function dragify(Frame)
+		dragToggle = nil
+		local dragSpeed = 0
+		dragInput = nil
+		dragStart = nil
+		local dragPos = nil
+		function updateInput(input)
+			local Delta = input.Position - dragStart
+			local Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + Delta.X, startPos.Y.Scale, startPos.Y.Offset + Delta.Y)
+			game:GetService("TweenService"):Create(Frame, TweenInfo.new(0.25), {Position = Position}):Play()
+		end
+		Frame.InputBegan:Connect(function(input)
+			if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) and UIS:GetFocusedTextBox() == nil then
+				dragToggle = true
+				dragStart = input.Position
+				startPos = Frame.Position
+				input.Changed:Connect(function()
+					if input.UserInputState == Enum.UserInputState.End then
+						dragToggle = false
+					end
+				end)
+			end
+		end)
+		Frame.InputChanged:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+				dragInput = input
+			end
+		end)
+		game:GetService("UserInputService").InputChanged:Connect(function(input)
+			if input == dragInput and dragToggle then
+				updateInput(input)
+			end
+		end)
+	end
+	
+	dragify(Main)
+
+
+
+local Players = game:GetService("Players")
+	
+	local player = Players.LocalPlayer
+	
+	local userId = player.UserId
+	local thumbType = Enum.ThumbnailType.HeadShot
+	local thumbSize = Enum.ThumbnailSize.Size420x420
+	local content, isReady = Players:GetUserThumbnailAsync(userId, thumbType, thumbSize)
+
+	ind.Image = content
+
+
+
+
+-- [ TAB MAIN ] --
+
+CreateButton("Test Button #1", Main1, function()
+    print("Imperium On Top #1")
+end);
+
+CreateButton("Test Button #2", Main1, function()
+    print("Imperium On Top #2")
+end);
+
+CreateButton("Test Button #3", Main1, function()
+    print("Imperium On Top #3")
+end);
+
+
+
+
+-- [ TAB COMBAT ] --
+
+CreateButton("Test Button #1", Combat1, function()
+    print("Imperium On Top #1")
+end);
+
+CreateButton("Test Button #2", Combat1, function()
+    print("Imperium On Top #2")
+end);
+
+CreateButton("Test Button #3", Combat1, function()
+    print("Imperium On Top #3")
+end);
+
+
+
+
+-- [ TAB ANIMATIONS ] --
+
+CreateButton("Zombie", Animations1, function()
+    	local Animate = game.Players.LocalPlayer.Character.Animate
+				Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=616158929"
+				Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=616160636"
+				Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=616168032"
+				Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=616163682"
+				Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=616161997"
+				Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=616156119"
+				Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=616157476"
+				game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end);
+CreateButton("Toy", Animations1, function()
+    	local Animate = game.Players.LocalPlayer.Character.Animate
+				Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=782841498"
+				Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=782845736"
+				Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=782843345"
+				Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=782842708"
+				Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=782847020"
+				Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=782843869"
+				Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=782846423"
+				game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end);
+CreateButton("Cartoony", Animations1, function()
+    	local Animate = game.Players.LocalPlayer.Character.Animate
+				Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=782841498"
+				Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=782845736"
+				Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=782843345"
+				Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=782842708"
+				Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=782847020"
+				Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=782843869"
+				Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=782846423"
+				game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end);
+CreateButton("SuperHero", Animations1, function()
+    local Animate = game.Players.LocalPlayer.Character.Animate
+				Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=616111295"
+				Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=616113536"
+				Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=616122287"
+				Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=616117076"
+				Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=616115533"
+				Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=616104706"
+				Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=616108001"
+				game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end);
+CreateButton("Ninja", Animations1, function()
+    local Animate = game.Players.LocalPlayer.Character.Animate
+				Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=656117400"
+				Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=656118341"
+				Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=656121766"
+				Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=656118852"
+				Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=656117878"
+				Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=656114359"
+				Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=656115606"
+				game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end);
+CreateButton("Knight", Animations1, function()
+    local Animate = game.Players.LocalPlayer.Character.Animate
+				Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=657595757"
+				Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=657568135"
+				Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=657552124"
+				Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=657564596"
+				Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=658409194"
+				Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=658360781"
+				Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=657600338"
+				game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end);
+CreateButton("Levitation", Animations1, function()
+    local Animate = game.Players.LocalPlayer.Character.Animate
+				Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=616006778"
+				Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=616008087"
+				Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=616013216"
+				Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=616010382"
+				Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=616008936"
+				Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=616003713"
+				Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=616005863"
+				game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end);
+CreateButton("Elder", Animations1, function()
+    local Animate = game.Players.LocalPlayer.Character.Animate
+				Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=845397899"
+				Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=845400520"
+				Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=845403856"
+				Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=845386501"
+				Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=845398858"
+				Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=845392038"
+				Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=845396048"
+				game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end);
+CreateButton("Robot", Animations1, function()
+    local Animate = game.Players.LocalPlayer.Character.Animate
+				Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=616088211"
+				Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=616089559"
+				Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=616095330"
+				Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=616091570"
+				Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=616090535"
+				Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=616086039"
+				Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=616087089"
+				game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end);
+CreateButton("Bubbly", Animations1, function()
+    local Animate = game.Players.LocalPlayer.Character.Animate
+				Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=910004836"
+				Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=910009958"
+				Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=910034870"
+				Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=910025107"
+				Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=910016857"
+				Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=910001910"
+				Animate.swimidle.SwimIdle.AnimationId = "http://www.roblox.com/asset/?id=910030921"
+				Animate.swim.Swim.AnimationId = "http://www.roblox.com/asset/?id=910028158"
+				game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end);
+CreateButton("Astronaut", Animations1, function()
+    local Animate = game.Players.LocalPlayer.Character.Animate
+				Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=891621366"
+				Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=891633237"
+				Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=891667138"
+				Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=891636393"
+				Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=891627522"
+				Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=891609353"
+				Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=891617961"
+				game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end);
+CreateButton("Anthro", Animations1, function()
+    local Animate = game.Players.LocalPlayer.Character.Animate
+				Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=2510196951"
+				Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=2510197257"
+				Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=2510202577"
+				Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=2510198475"
+				Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=2510197830"
+				Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=2510192778"
+				Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=2510195892"
+				game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end);
+CreateButton("Stylish", Animations1, function()
+    				local Animate = game.Players.LocalPlayer.Character.Animate
+				Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=616136790"
+				Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=616138447"
+				Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=616146177"
+				Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=616140816"
+				Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=616139451"
+				Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=616133594"
+				Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=616134815"
+				game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end);
+CreateButton("Vampire", Animations1, function()
+    	local Animate = game.Players.LocalPlayer.Character.Animate
+				Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=1083445855"
+				Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=1083450166"
+				Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=1083473930"
+				Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=1083462077"
+				Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=1083455352"
+				Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=1083439238"
+				Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=1083443587"
+				game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end);
+CreateButton("Mage", Animations1, function()
+    	local Animate = game.Players.LocalPlayer.Character.Animate
+				Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=707742142"
+				Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=707855907"
+				Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=707897309"
+				Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=707861613"
+				Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=707853694"
+				Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=707826056"
+				Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=707829716"
+				game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end);
+CreateButton("Pirate", Animations1, function()
+    local Animate = game.Players.LocalPlayer.Character.Animate
+				Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=750781874"
+				Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=750782770"
+				Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=750785693"
+				Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=750783738"
+				Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=750782230"
+				Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=750779899"
+				Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=750780242"
+				game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end);
+
+
+
+
+-- [ TAB LOCATIONS ] --
+
+CreateButton("Test Button #1", Locations1, function()
+    print("Imperium On Top #1")
+end);
+
+CreateButton("Test Button #2", Locations1, function()
+    print("Imperium On Top #2")
+end);
+
+CreateButton("Test Button #3", Locations1, function()
+    print("Imperium On Top #3")
+end);
+
+
+
+
+-- [ TAB FUNSTUFF ] --
+
+CreateButton("Test Button #1", FunStuff1, function()
+    print("Imperium On Top #1")
+end);
+
+CreateButton("Test Button #2", FunStuff1, function()
+    print("Imperium On Top #2")
+end);
+
+CreateButton("Test Button #3", FunStuff1, function()
+    print("Imperium On Top #3")
+end);
