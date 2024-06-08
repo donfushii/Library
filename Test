@@ -347,9 +347,10 @@ MainTAB:Button("📍 ・ Potion Dick", function()
 
 	wait(0.1)
 
-	PotionTool.Activated:Connect(function()
-		ActivateTool()
-	end)
+	    PotionTool.Activated:Connect(function()
+		    ActivateTool()
+	    end)
+    end)
 end)
 
 ---- [ ] ----
@@ -764,4 +765,3 @@ local impadmin = {
   end
 
 -- [ TAG'S ] --
-
