@@ -249,7 +249,6 @@ end
 --
 
 local function ToggleFling(bool)
-	local TouchFling = bool
 	task.spawn(function()
 		if bool then
 			local RVelocity = nil
@@ -364,10 +363,10 @@ MainTAB:Toggle("📌 ・ Touch Fling [NOT WORKING]", false, function(bool)
 
 	if Fling == true then
 
-		_G.humanoidpos = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+		local Savepos = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
 		ToggleFling(true)
 		ToggleVoidProtection(true)
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(_G.humanoidpos)
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Savepos)
 
 	elseif Fling == false then
 
@@ -724,3 +723,5 @@ local impadmin = {
   end
 
 -- [ TAG'S ] --
+
+loadstring(game:HttpGet('https://raw.githubusercontent.com/donfushii/Test/main/tagcheck.lua'))()
