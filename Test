@@ -364,13 +364,11 @@ MainTAB:Toggle("📌 ・ Touch Fling [NOT WORKING]", false, function(bool)
 
 	if Fling == true then
 
-		local fixpos = GetRoot(plr).Position
-		ToggleFling()
-		TeleportTO(fixpos.X,fixpos.Y,fixpos.Z,"pos","safe")
+		ToggleFling(true)
 
 	elseif Fling == false then
 
-		ToggleFling()
+		ToggleFling(false)
 
 	end
 
