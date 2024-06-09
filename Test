@@ -258,12 +258,9 @@ local function ToggleFling(bool)
 					GetRoot(plr).Velocity = Vector3.new(math.random(-150,150),-25000,math.random(-150,150))
 					RunService.RenderStepped:wait()
 					GetRoot(plr).Velocity = RVelocity
+					RunService.Heartbeat:wait()
 				end)
-				RunService.Heartbeat:wait()
-			until return false
-		else
-			return true
-		end
+			end
 	end)
 end
 
