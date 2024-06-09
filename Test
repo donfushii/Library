@@ -259,7 +259,10 @@ local function ToggleFling(bool)
 					RunService.RenderStepped:wait()
 					GetRoot(plr).Velocity = RVelocity
 				end)
-			RunService.Heartbeat:wait()
+				RunService.Heartbeat:wait()
+			until return false
+		else
+			return true
 		end
 	end)
 end
