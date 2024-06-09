@@ -361,24 +361,16 @@ end)
 MainTAB:Toggle("📌 ・ Touch Fling [NOT WORKING]", false, function(bool)
 
 	local Fling = bool
-	local Void = bool
 
 	if Fling == true then
 
 		local fixpos = GetRoot(plr).Position
-		ToggleVoidProtection(true)
-		ToggleFling(true)
+		ToggleFling()
 		TeleportTO(fixpos.X,fixpos.Y,fixpos.Z,"pos","safe")
-
-		if Void == true then
-
-			ToggleVoidProtection(true)
-
-		end
 
 	elseif Fling == false then
 
-		ToggleFling(false)
+		ToggleFling()
 
 	end
 
