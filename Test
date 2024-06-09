@@ -367,6 +367,7 @@ MainTAB:Toggle("📌 ・ Touch Fling [NOT WORKING]", false, function(bool)
 		ToggleVoidProtection(true)
 		ToggleFling(true)
 		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Savepos)
+		ToggleVoidProtection(false)
 
 	elseif Fling == false then
 
