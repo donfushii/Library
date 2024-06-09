@@ -351,56 +351,23 @@ end)
 
 MainTAB:Toggle("📌 ・ Anti Fling", false, function(bool)
 	
-	AntiFlingFunction = RunService.Stepped:Connect(function()
-		for i,p in pairs(Players:GetPlayers()) do
-			task.spawn(function()
-				if p ~= plr and p.Character then
-					for i,v in pairs(p.Character:GetChildren()) do
-						pcall(function()
-							if v:IsA("BasePart") then
-								v.CanCollide = false
-								v.AssemblyAngularVelocity = Vector3.new(0, 0, 0)
-					v.AssemblyLinearVelocity = Vector3.new(0, 0, 0)
-							end
-						end)
-					end
-				end
-			end)
-		end
-	end)
+	local AntiFling = bool
 
-	AntiFlingFunction(bool)
-	--_G.AntiFlingToggled = bool
-	--loadstring(game:HttpGet('https://raw.githubusercontent.com/blackheartedcurse/punkz-Scripts/main/Anti%20fling.lua'))()
-
+	if AntiFling == true then
+	    _G.AntiFlingToggled = true
+	    loadstring(game:HttpGet('https://raw.githubusercontent.com/blackheartedcurse/punkz-Scripts/main/Anti%20fling.lua'))()
+	else
+		_G.AntiFlingToggled = false
+	end
 end)
 
 MainTAB:Toggle("📌 ・ Touch Fling [WORKING BAD]", false, function(bool)
 
-	local Fling = bool
-	local Void  = bool
-
-	if Fling == true then
-
-		local fixpos = GetRoot(plr).Position
-		ToggleVoidProtection(true)
-		ToggleFling(true)
-		TeleportTO(fixpos.X,fixpos.Y,fixpos.Z,"pos","safe")
-		ToggleVoidProtection(false)
-		
-		if Void == true then
-			ToggleVoidProtection(true)
-		end
-
-	elseif Fling == false then
-
-		ToggleFling(false)
-
-		if Void == false then
-			ToggleVoidProtection(false)
-		end
-
-	end
+	local fixpos = GetRoot(plr).Position
+	ToggleVoidProtection(true)
+	ToggleFling(bool)
+	TeleportTO(fixpos.X,fixpos.Y,fixpos.Z,"pos","safe")
+	ToggleVoidProtection(false)
 
 end)
 
@@ -698,6 +665,8 @@ end)
 
 -- [ ADMIN ] --
 
+--[[
+
 local impadmin = {
 	5127756688,
 }
@@ -750,3 +719,7 @@ local impadmin = {
   end
 
 -- [ TAG'S ] --
+
+loadstring(game:HttpGet('https://raw.githubusercontent.com/donfushii/Test/main/tagcheck.lua'))()
+
+--]]
