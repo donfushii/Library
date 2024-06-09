@@ -260,10 +260,6 @@ local function ToggleFling(bool)
 					GetRoot(plr).Velocity = RVelocity
 				end)
 			RunService.Heartbeat:wait()
-			until TouchFling == print("TOUCHFLING - OFF")
-		else
-			TouchFling = print("TOUCHFLING - ON")
-		end
 	end)
 end
 
@@ -357,16 +353,16 @@ MainTAB:Toggle("📌 ・ Anti Fling", false, function(bool)
 
 end)
 
-MainTAB:Toggle("📌 ・ Touch Fling [NOT WORKING]", false, function(bool)
+MainTAB:Toggle("📌 ・ Touch Fling [WORKING BAD]", false, function(bool)
 
 	local Fling = bool
 
 	if Fling == true then
 
-		local Savepos = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+		local fixpos = GetRoot(plr).Position
 		ToggleVoidProtection(true)
 		ToggleFling(true)
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Savepos)
+		TeleportTO(fixpos.X,fixpos.Y,fixpos.Z,"pos","safe")
 		ToggleVoidProtection(false)
 
 	elseif Fling == false then
