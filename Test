@@ -249,6 +249,7 @@ end
 --
 
 local function ToggleFling(bool)
+	local TouchFling = bool
 	task.spawn(function()
 		if bool then
 			local RVelocity = nil
@@ -260,25 +261,11 @@ local function ToggleFling(bool)
 					GetRoot(plr).Velocity = RVelocity
 				end)
 			RunService.Heartbeat:wait()
-			until TouchFling == print("TOUCHFLING - ON")
+			until TouchFling == print("TOUCHFLING - OFF")
 		else
-			TouchFling = print("TOUCHFLING - OFF")
+			TouchFling = print("TOUCHFLING - ON")
 		end
 	end)
-end
-
---
-
-local function UpdateTarget(player)
-	pcall(function()
-		if table.find(ForceWhitelist,player.UserId) then
-			SendNotify("[NOTIFICATION]","You cant target the player: @" ..player.DisplayName.. " because they are on Whitelist.", 5)
-			player = nil
-		end
-	end)
-	if (player ~= nil) then
-		TargetedPlayer = player.Name
-	end
 end
 
 
@@ -337,13 +324,13 @@ MainTAB:Button("📍 ・ Potion Dick", function()
 	if CheckPotion() then
 		PotionTool.Parent = plr.Character
 		PotionTool.GripUp = Vector3.new(1,0,0)
-		PotionTool.GripPos = Vector3.new(1.5, 0.5, -1.5)
+		PotionTool.GripPos = Vector3.new(1.5, 0.5, -1.1)
 		PotionTool.Parent = plr.Backpack
 		PotionTool.Parent = plr.Character
     else
 		PotionTool.Parent = plr.Character
-		PotionTool.GripUp = Vector3.new(0,1,0)
-		PotionTool.GripPos = Vector3.new(0.1,-0.5,0)
+		PotionTool.GripUp = Vector3.new(0, 0, 0)
+		PotionTool.GripPos = Vector3.new(0, 0, 0)
 		PotionTool.Parent = plr.Backpack
 		PotionTool.Parent = plr.Character
 	end
@@ -366,54 +353,36 @@ end)
 
 MainTAB:Toggle("📌 ・ Anti Fling", false, function(bool)
 
-	local RunService = game:GetService("RunService")
-	local players = game:GetService("Players")
-	local plr = players.LocalPlayer
-	local AntiFlingFunction = nil
-	
-	AntiFlingFunction = RunService.Stepped:Connect(function()
-		for i,p in pairs(players:GetPlayers()) do
-			task.spawn(function()
-				if p ~= plr and p.Character then
-					for i,v in pairs(p.Character:GetChildren()) do
-						pcall(function()
-							if v:IsA("BasePart") then
-								v.CanCollide = false
-								v.AssemblyAngularVelocity = Vector3.new(0, 0, 0)
-					v.AssemblyLinearVelocity = Vector3.new(0, 0, 0)
-							end
-						end)
-					end
-				end
-			end)
-		end
-	end)
-	
-	repeat task.wait() until _G.AntiFlingToggled == false
-	AntiFlingFunction:Disconnect()
-
 	_G.AntiFlingToggled = bool
-	--loadstring(game:HttpGet('https://raw.githubusercontent.com/blackheartedcurse/punkz-Scripts/main/Anti%20fling.lua'))()
+	loadstring(game:HttpGet('https://raw.githubusercontent.com/blackheartedcurse/punkz-Scripts/main/Anti%20fling.lua'))()
 
 end)
 
---[[
 MainTAB:Toggle("📌 ・ Touch Fling [NOT WORKING]", false, function(bool)
 
-	if TouchFling == print("ALLPROTECTIONS - ON") then
-		local fixpos = GetRoot(plr).Position
-	    ToggleVoidProtection(true)
-	    ToggleFling(true)
-		TeleportTO(fixpos.X,fixpos.Y,fixpos.Z,"pos","safe")
-		ToggleVoidProtection(false)
+	local Fling = bool
+	local Void = bool
 
-		if VoidProtection == print("VOIDPROTECTION - ON") then
+	if Fling == true then
+
+		local fixpos = GetRoot(plr).Position
+		ToggleVoidProtection(true)
+		ToggleFling(true)
+		TeleportTO(fixpos.X,fixpos.Y,fixpos.Z,"pos","safe")
+
+		if Void == true then
+
 			ToggleVoidProtection(true)
+
 		end
+
+	elseif Fling == false then
+
+		ToggleFling(false)
+
 	end
 
 end)
---]]
 
 MainTAB:Toggle("📌 ・ Void Protection", false, function(bool)
 
@@ -761,4 +730,3 @@ local impadmin = {
   end
 
 -- [ TAG'S ] --
-
